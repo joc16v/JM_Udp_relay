@@ -72,3 +72,15 @@ Build izvršne verzije je prošao bez upozorenja i grešaka. Prošle su provjere
 GitHub Actions Windows runner uspješno je izvršio cijeli skup testova: tri odredišta, identični payloadovi 29–60000 bajtova, izvorni port, brojači, duplikati, isključivanje i ponovno uključivanje drugog odredišta bez prekida prvog, zauzet port, ponovno pokretanje te nedostupno odredište. [Zapisnik provjere](https://github.com/joc16v/JM_Udp_relay/actions/runs/39337811388).
 
 Lokalni razvojni sandbox blokirao je čak i osnovni UDP loopback test; zato je mrežna provjera provedena na GitHub runneru. Izlazni kod testova 2 označava blokiran osnovni UDP test, 1 grešku, a 0 uspjeh. GUI nije ručno provjeren. Rad sa stvarnim stYpe/Viz sustavom i latencija još nisu potvrđeni.
+
+## Visual Studio
+
+Preuzmi [cijeli solution ZIP s main grane](https://github.com/joc16v/JM_Udp_relay/archive/refs/heads/main.zip), raspakiraj ga i otvori **JM_Udp_relay.sln**.
+
+Koristi Visual Studio 2022 17.8 ili noviji s workloadom **.NET desktop development** i .NET 8 SDK-om. Runtime je dovoljan za pokretanje gotovog programa, a za build je potreban SDK. Ako nije odabran, postavi **StypeUdpRelay** kao Startup Project i pritisni F5. Projekt **StypeUdpRelay.Tests** je konzolni skup provjera; pokreni ga zasebno za testove.
+
+Za mali build bez ukljucenog runtimea:
+
+```powershell
+dotnet publish .\StypeUdpRelay\StypeUdpRelay.csproj -c Release -r win-x64 --self-contained false -o .\publish-small
+```
