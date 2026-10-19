@@ -1,10 +1,10 @@
-# JM stYpe UDP Relay 1.1
+# JM stYpe UDP Relay 1.1.1
 
 **Windows program:** [Preuzmi ZIP iz najnovijeg Releasea](https://github.com/joc16v/JM_Udp_relay/releases/latest).
 Pod **Assets** odaberi:
 
-- `StypeUdpRelay_v1.1_Windows_x64_small.zip` — mali paket, zahtijeva **.NET 8 Desktop Runtime x64** (`Microsoft.WindowsDesktop.App 8.x`). Raspakiraj sve datoteke i pokreni `StypeUdpRelay.exe`.
-- `StypeUdpRelay_v1.1_Windows_x64.zip` — veći paket s uključenim runtimeom.
+- `StypeUdpRelay_v1.1.1_Windows_x64_small.zip` — mali paket, zahtijeva **.NET 8 Desktop Runtime x64** (`Microsoft.WindowsDesktop.App 8.x`). Raspakiraj sve datoteke i pokreni `StypeUdpRelay.exe`.
+- `StypeUdpRelay_v1.1.1_Windows_x64.zip` — veći paket s uključenim runtimeom.
 
 Provjera instaliranog runtimea: `dotnet --list-runtimes`; na popisu treba biti `Microsoft.WindowsDesktop.App 8.x` u x64 instalaciji.
 
@@ -40,7 +40,8 @@ Ista IP adresa za ulaz i izlaz dopuštena je ako su portovi različiti. Za lokal
 - Nakon promjene, sljedeci primljeni paketi koriste novi popis; vec zapoceto slanje jednog paketa moze dovrsiti prethodni popis.
 - Ako iskljucis sva odredista, prijam ostaje aktivan, ali se paketi ne prosljedjuju.
 
-- Novi red u tablici dodaje odredište. Odaberi cijeli red i pritisni Delete za uklanjanje.
+- Novi red u tablici dodaje odredište. Klikni bilo koju ćeliju reda i pritisni **Delete selected row**. Tipka Delete briše odabrani red kad ne uređuješ tekst ćelije.
+- Potpuno prazni redovi (bez IP adrese i porta) ignoriraju se pri spremanju i uklanjaju iz tablice pri pokretanju. Djelomično upisan red prijavljuje broj reda koji treba dopuniti ili obrisati.
 - **Start** sprema postavke i pokreće prijam. Za izmjene adresa/portova i dodavanje/brisanje redova prvo pritisni **Stop**. Checkboxovi su dostupni i tijekom rada.
 - **Save settings** sprema postavke bez pokretanja.
 - **Start forwarding when app opens** automatski pokreće forwarding pri sljedećem pokretanju programa. To samo po sebi ne dodaje program u Windows Startup.
@@ -84,3 +85,7 @@ Za mali build bez ukljucenog runtimea:
 ```powershell
 dotnet publish .\StypeUdpRelay\StypeUdpRelay.csproj -c Release -r win-x64 --self-contained false -o .\publish-small
 ```
+
+### Popravak v1.1.1
+
+Dodano vidljivo zaglavlje redova, odabir cijelog reda i gumb **Delete selected row**. Testovi `StypeUdpRelay.UiTests` provjeravaju brisanje i obradu praznih/nepotpunih redova bez prikazivanja prozora. CI prvo gradi cijeli solution pa izvršava te provjere i UDP testove.
