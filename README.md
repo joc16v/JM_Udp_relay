@@ -1,7 +1,14 @@
 # JM stYpe UDP Relay 1.1
 
 **Windows program:** [Preuzmi ZIP iz najnovijeg Releasea](https://github.com/joc16v/JM_Udp_relay/releases/latest).
-Odaberi `StypeUdpRelay_v1.1_Windows_x64.zip` pod **Assets**. GitHubov **Code > Download ZIP** sadrzi samo izvorni kod.
+Pod **Assets** odaberi:
+
+- `StypeUdpRelay_v1.1_Windows_x64_small.zip` — mali paket, zahtijeva **.NET 8 Desktop Runtime x64** (`Microsoft.WindowsDesktop.App 8.x`). Raspakiraj sve datoteke i pokreni `StypeUdpRelay.exe`.
+- `StypeUdpRelay_v1.1_Windows_x64.zip` — veći paket s uključenim runtimeom.
+
+Provjera instaliranog runtimea: `dotnet --list-runtimes`; na popisu treba biti `Microsoft.WindowsDesktop.App 8.x` u x64 instalaciji.
+
+ GitHubov **Code > Download ZIP** sadrzi samo izvorni kod.
 
 
 Mali Windows x64 UDP razdjelnik: jedan ulaz, proizvoljan broj IPv4 odredišta.
@@ -39,7 +46,7 @@ Ista IP adresa za ulaz i izlaz dopuštena je ako su portovi različiti. Za lokal
 - **Start forwarding when app opens** automatski pokreće forwarding pri sljedećem pokretanju programa. To samo po sebi ne dodaje program u Windows Startup.
 - Postavke: `%LOCALAPPDATA%\JM Tools\StypeUdpRelay\settings.json`.
 - Zatvaranjem prozora prestaje prosljeđivanje; prozor može ostati minimiziran.
-- Runtime je uključen. Nije potrebna zasebna .NET instalacija. Zadrži sve datoteke iz mape `app` zajedno.
+- U većem paketu runtime je uključen. Mali paket koristi postojeći .NET 8 Desktop Runtime x64. U oba slučaja zadrži sve raspakirane datoteke zajedno.
 
 ## Mreža i ponašanje
 
